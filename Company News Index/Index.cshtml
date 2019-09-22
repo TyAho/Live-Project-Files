@@ -1,0 +1,84 @@
+﻿@using ManagementPortal.Common
+@model PagedList.IPagedList<ManagementPortal.Models.CompanyNews>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "CompanyNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="IndexBody">
+    <h2 class="text-center">Company News</h2>
+
+    <p>
+        @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetCreate())
+    </p>
+
+    @using (Html.BeginForm("Index", "CompanyNews", FormMethod.Get))
+    {
+        <p>
+            @*search box*@
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+
+            @*Button that returns to default page view*@
+            <a type="button" class="btn btn-sm" href="@Url.Action("Index")">
+                Show News
+            </a>
+        </p>
+    }
+
+
+
+
+        <div class="row no-gutters">
+            <table class="table">
+
+                <tr>
+                    <th>
+                        @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th class="text-center"> 
+                        @Html.ActionLink("Body", "")
+                    </th>
+                    <th>
+                        @Html.ActionLink("Expiration Date", "Index", new { sortOrder = ViewBag.ExDateSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th></th>
+                </tr>
+
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewsItem)
+                        </td>
+                        <td id="dateContainer">
+                            @Convert.ToDateTime(item.ExpirationDate).ToString("MM-dd-yyyy")
+                        </td>
+                        <td id="editDeletButtons">
+                            @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetEditDetailsDelete(item.NewsId.ToString()))
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+</div>
+
+@****************         Modal Error         *****************@
+
+@if (ViewBag.ErrorModalVM != null)
+{
+    @Html.Partial("_ErrorModal", (ManagementPortal.ViewModels.ErrorModalVM)ViewBag.ErrorModalVM)
+}

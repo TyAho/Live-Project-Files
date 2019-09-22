@@ -1,0 +1,1227 @@
+﻿:root {
+    --light-grey: #BDC3C7;
+    --dark-grey: #949DA4;
+    --light-blue: #7395AE;
+    --dark-blue: #1F2833;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    /*my adds **/
+    background-image: url('images/bgPattern.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.jumbotron {
+    text-align: center !important;
+}
+
+.dashboard_text {
+    margin-top: 30px;
+    color: black;
+    text-shadow: 2px 2px 8px white;
+    font-size: 20px;
+}
+
+.dashboard_title {
+    font-size: 40px;
+    color: #eee;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-top: 40px;
+}
+
+/*Profile image styling */
+#ProfileImg {
+    border: 2px solid white;
+    border-radius: 50%;
+}
+#ProfileImg:hover {
+    transform: scale(4);
+    transition: transform .1s ease;
+    border: none;
+    position: sticky;
+    z-index: 9000;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.threeCards {
+    background-color: rgba(99,43,73, 0.53);
+    border-radius:10px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.table-bg {
+    background-color: white;
+}
+
+/*Universal h2 styles*/
+
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+    text-shadow: #200117 10px 0 20px;
+}
+
+/*Universal form background*/
+
+.form-horizontal {
+    background-color: rgba(201,173,167, 0.82);
+    padding: 20px;
+    border-radius: 10px;
+    color: #000;
+    min-width: 265px;
+}
+
+/***** Login Page Styles *****/
+/*#loginContainer {
+    background-color: rgba(201,173,167, 0.82);
+    padding: 20px;
+    border-radius: 10px;
+    color: #000;
+    min-width: 265px;
+}*/
+.loginItemContainer {
+    background-color: #DADADA;
+    border-radius: 5px;
+    color: #4e4e4e;
+    height: 38px;
+    line-height: 38px;
+    width: 100%;
+    max-width: 190px;
+    margin: 15px;
+    padding: 0px 15px;
+}
+
+.loginItemBtn {
+    cursor: pointer;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}
+
+.loginItemAnchor {
+    color: #000;
+    text-decoration: none !important;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.loginItemContainer:hover, .createBtn:hover {
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px 5px #f8f8f8;
+    text-decoration: none !important;
+}
+
+.form-control {
+    box-shadow: 0px 0px 1px 3px #f8f8f8 !important;
+    border-radius: 1.25rem !important;
+}
+
+
+/**styling the scheduling page */
+#scheduleContainer {
+    background-color: rgba(201,173,167, 0.82);
+    padding: 20px;
+    border-radius: 10px;
+    color: #000;
+}
+
+/** Create Button */
+.createBtn {
+    background-color: #DADADA;
+    width: 100px;
+    border-radius: 5px;
+    color: #f8f8f8;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+/**styling the Job Create page */
+#jobsContainer {
+    background-color: rgba(201,173,167, 0.82);
+    padding: 20px;
+    border-radius: 10px;
+    color: #000;
+}
+
+/*styling the register form*/
+
+/*#regForm {
+    background-color: rgba(201,173,167, 0.82);
+    padding: 20px;
+    border-radius: 10px;
+    color: #000;
+    min-width: 265px;
+}*/
+
+#regBtns:hover {
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px 5px #f8f8f8;
+    width: 18%;
+}
+
+#regBtns {
+    background-color: #DADADA;
+    width: 35% !important;
+    border-radius: 5px;
+    padding: 1px 22px 1px 45px;
+    margin-left: 15px;
+}
+
+/***** Chat Styling *****/
+#chat-header {
+    color: white;
+    background-color: var(--dark-grey);
+    border-radius: inherit;
+    border: inherit;
+}
+
+.modal-header {
+    padding: 0px;
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+#close-icon {
+    padding-right: 15px;
+    margin: 0px;
+}
+
+#discussion {
+    overflow: auto;
+    font-size: .9em;
+    padding: 0px;
+    list-style-type: none;
+    overflow-y: scroll;
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.chatBubbles {
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: inline-block;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#myChat {
+    text-align: right;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 4px;
+    background: grey;
+    margin-right: 8%;
+    margin-left: 25%;
+    float: right;
+}
+
+#myChat::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: grey;
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+}
+
+#myChat::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-left-radius: 10px;
+}
+
+#yourChat {
+    text-align: left;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: -5px;
+    background: #DADADA;
+    margin-left: 8%;
+    margin-right: 25%;
+}
+
+#yourChat::before{
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #DADADA;
+    border-bottom-right-radius: 15px;
+}
+
+#yourChat::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+}
+
+#myName {
+    text-align: right;
+    float: right;
+    margin-top: -10px;
+    margin-bottom: -4px;
+}
+
+#yourName {
+    text-align: left;
+    margin-top: -20px;
+}
+
+/* Textarea to enter a new message */
+#message-box {
+    resize: none;
+    width: 80%;
+    height: 35px;
+    padding: 5px;
+    border-radius: 5px;
+    vertical-align: bottom;
+    font-size: .9em;
+}
+
+#send-message {
+    color: white;
+    background-color: var(--dark-grey);
+    height: 40px;
+    width: 65px;
+}
+
+.modal-right .modal-dialog {
+    position: fixed;
+    left: auto;
+    right: 30px;
+    bottom: 0px;
+    height: 400px;
+    width: 400px;
+}
+
+.modal-backdrop {
+    display: none; /* Prevents the background from being greyed out when the modal is open */
+}
+/***** End of chat styling *****/
+
+/***** Navbar Styling *****/
+
+/*#brand-name {
+    text-align: center;
+    padding: 50px 40px;
+    font-family: 'Vollkorn SC', cursive;
+    font-size: 2em;
+    color: white;
+}*/
+
+
+
+/* for header dropdown button */
+.headernav {
+    margin-right: 20%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: .9em;
+}
+
+
+/* for header dropdown menu */
+.navdrop {
+    list-style-type: none;
+    padding-left: 15%;
+    background-color: #dbe4e3;
+    margin-bottom: -20px;
+    margin-top: -10px;
+}
+/* remove underlines from links  */
+.removelinkdefault {
+    text-decoration: none !important;
+}
+
+.textcolor:hover {
+    color: white !important;
+    /*The following code was causing the dark blue background on the header dropdown
+    background-color: #22223b !important;*/
+}
+
+
+/************fixes bug where header dropdown isn't working.  Changes it to hover**********/
+.dropdown:hover > .dropdown-menu {
+    display: block;
+    background-color: aliceblue;
+}
+
+.sidenav {
+    height: 100%;
+    width: 230px;
+    float: left;
+    background-color: none;
+    overflow-x: hidden;
+    position: fixed;
+    z-index: 1;
+}
+
+.navbar-toggler {
+    color: #595959;
+    padding-left: 15px;
+    font-size: 1.5em;
+    border: none;
+}
+
+#navigation .navbar-toggler {
+    padding-left: 15px;
+    position: absolute;
+    transition: transform 700ms cubic-bezier(0.2, 1, 0.2, 1);
+    cursor: default;
+    z-index: 2;
+    pointer-events: none;
+    /* Because an invisible div box is left behind on the left side of the navbar, we need to be able to click through this */
+}
+
+.navbar-toggler:hover {
+    color: white;
+    background-color: gray;        
+}
+
+.navbar-toggler:focus, .navbar-toggler:active {
+	outline: none !important;
+	box-shadow: none;
+}
+
+.toggle-btn {
+    color: black;
+    padding-left: 15px;
+    font-size: 1.5em;
+    background-color: inherit;
+    border: none;
+}
+
+    .toggle-btn:hover {
+        color: var(--dark-blue);
+    }
+
+.navbar-toggler.toggler-example {
+    cursor: pointer;
+}
+
+#menu {
+    width: 230px;
+    background: white;
+}
+
+    #menu ul,
+    #menu li,
+    #menu a {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        font-family: serif;
+        font-size: 18px;
+        position: relative;
+    }
+
+    #menu > ul > li > a {
+        font-size: 20px;
+        display: block;
+        color: #595959;
+        padding: 10px;
+    }
+
+.nav-title {
+    padding: 10px;
+    font-size: 20px;
+    line-height: 1.5em;
+    text-align: left;
+}
+
+.icon-padding {
+    padding-right: 15px;
+}
+
+#menu > ul > li > a:hover {
+    text-decoration: none;
+    color: var(--dark-blue);
+}
+
+#menu > ul > li.active {
+    border-bottom: none;
+}
+
+    #menu > ul > li.active > a {
+        color: gray;
+    }
+
+/* Sub menu */
+#menu ul ul {
+    display: none;
+}
+
+    #menu ul ul li {
+        text-align: left;
+        padding-left: 35px;
+    }
+
+    /*Made "Send New Message" under "Chat" in the home navbar visable*/
+    #menu ul ul a {
+        padding: 10px;
+        display: block;
+        color: gray;
+        position: relative;
+        font-size: 16px;
+    }
+
+        #menu ul ul a:hover {
+            color: var(--dark-blue);
+        }
+
+
+/* Hamburger styling and translation for hover */
+.animated-icon {
+    width: 36px;
+    height: 29px;
+    position: relative;
+    margin: 0px;
+    cursor: default;
+    background-color: white;
+    pointer-events: all; /* Added since we turned off pointer events on the parent */
+    transform: translateX(0px);
+    -webkit-transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
+    -moz-transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
+    -o-transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
+    transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+    .animated-icon.open {
+        transform: translateX(170px);
+    }
+
+    /* Hamburger styling */
+    .animated-icon span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 30px;
+        opacity: 1;
+        left: 3px;
+        background: #595959;
+    }
+
+        .animated-icon span:nth-child(1) {
+            top: 5px;
+        }
+
+        .animated-icon span:nth-child(2), .animated-icon span:nth-child(3) {
+            top: 13px;
+        }
+
+        .animated-icon span:nth-child(4) {
+            top: 21px;
+        }
+
+/* Hamburger border styling */
+.icon-bg {
+    position: absolute;
+    width: 55px;
+    height: 37px;
+    z-index: -1;
+    margin: -4px;
+    margin-left: -15px;
+}
+
+/****** End of navbar styling ******/
+
+/** Header & Image **/
+
+header {
+    max-width: none;
+    /*max-height: 125px;*/
+    position: relative;
+}
+
+#site-header {
+    background-image: url(images/constructionBanner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    width: auto;
+    height: 120px;
+}
+
+
+#header-title {
+    text-align: left;
+    font-family: 'Vollkorn SC', cursive;
+    font-size: 2.7vw;
+    color: black;
+}
+
+    #header-title img {
+        width: auto;
+        height: 75px;
+    }
+
+/*Moved the main container over to the right so that it was not being overlapped by the Navbar*/
+#main {
+    padding: 30px 100px 40px 50px;
+}
+
+footer {
+    display: flex;
+    width: 250px;
+    margin: 10px auto;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 25%, rgba(195,195,195,0.2) 50%, rgba(140,140,160,0) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.325);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+/****Company News Cards****/
+#news-header {
+    background-color: rgb(117, 137, 138);
+    /*padding: 15px 0px 0px 10px;*/
+
+    /*display:flex;
+    flex-wrap: wrap;*/
+}
+
+#new-body {
+    background-color: rgb(219, 228, 227);
+    padding: 15px 0px 0px 80px;
+    
+    /*display: flex;
+    flex-wrap: wrap;*/
+}
+    #new-body .card {
+        box-shadow: 5px 7px var(--dark-grey);
+        padding: 15px 20px 40px 10px;
+        /*margin-right:10px;
+        margin-left:-10px;*/
+        
+        width: 330px;
+        /*height: 50%;*/
+        /*display: flex;
+        flex-wrap: wrap;*/
+    }
+.col {
+    /*-ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;*/
+    flex-grow: 0;
+    max-width: 100%;
+    
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1340px;
+
+    }
+}
+
+/****Datepicker Styling****/
+.ui-datepicker {
+    background-color: white;
+    border-radius: 10px;
+    width: 200px;
+    height: auto;
+    margin: 5px auto 0;
+}
+
+    .ui-datepicker table {
+        width: 100%;
+    }
+
+.ui-datepicker-header {
+    background-color: var(--light-grey);
+}
+
+.ui-datepicker-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.ui-datepicker-prev {
+    float: left;
+    background-position: center -30px;
+}
+
+.ui-datepicker-next {
+    float: right;
+    background-position: center 0px;
+}
+
+/****Styling for Company News/Jobs Index****/
+
+#editDeletButtons {
+    width: 250px;
+}
+
+#dateContainer {
+    width: 120px;
+}
+.IndexBody {
+    background-color: rgba(255, 255, 255,0.8);
+    padding: 10px;
+    width:auto;
+}
+/*.card h-100 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    
+}*/
+/*Added foreground and background colors to WorkType*/
+#WorkType {
+    background-color: skyblue;
+    color: palevioletred;
+}
+
+.IndexBody row {
+    margin: 10px;
+}
+
+
+/* Begin styling for Password Validation Box */
+/*input#Password {
+    width: 180px;
+    padding: 3px;
+    color: #000;
+    float: left;
+    margin-right: 10px;
+}*/
+
+#pwd_strength_wrap {
+    border: 1px solid #D5CEC8;
+    display: none;
+    float: right;
+    padding: 10px;
+    position: absolute;
+    width: 320px;
+    background-color: white;
+    z-index: 1;
+    margin-left: 95%;
+    top: 0px;
+}
+
+    #pwd_strength_wrap:before, #pwd_strength_wrap:after {
+        content: ' ';
+        height: 0;
+        position: absolute;
+        width: 0;
+        border: 10px solid transparent; /* arrow size */
+    }
+
+    #pwd_strength_wrap:before {
+        border-bottom: 7px solid rgba(0, 0, 0, 0);
+        border-right: 7px solid rgba(0, 0, 0, 0.1);
+        border-top: 7px solid rgba(0, 0, 0, 0);
+        content: "";
+        display: inline-block;
+        left: -18px;
+        position: absolute;
+        top: 10px;
+    }
+
+    #pwd_strength_wrap:after {
+        border-bottom: 6px solid rgba(0, 0, 0, 0);
+        border-right: 6px solid #fff;
+        border-top: 6px solid rgba(0, 0, 0, 0);
+        content: "";
+        display: inline-block;
+        left: -16px;
+        position: absolute;
+        top: 11px;
+    }
+
+#pswd_info ul {
+    list-style-type: none;
+    margin: 5px 0 0;
+    padding: 0;
+}
+
+    #pswd_info ul li {
+        background: url(icon_pwd_strength.png) no-repeat left 2px;
+        padding: 0 0 0 20px;
+        color: red;
+    }
+
+        #pswd_info ul li.valid {
+            background-position: left -42px;
+            color: green;
+        }
+
+#passwordStrength {
+    display: block;
+    height: 5px;
+    margin-bottom: 10px;
+    transition: all 0.4s ease;
+}
+
+.strength0 {
+    background: none; /* too short */
+    width: 0px;
+}
+
+.strength1 {
+    background: none repeat scroll 0 0 #FF4545; /* weak */
+    width: 75px;
+}
+
+.strength2 {
+    background: none repeat scroll 0 0 #FFC824; /* good */
+    width: 150px;
+}
+
+.strength3 {
+    background: none repeat scroll 0 0 #6699CC; /* strong */
+    width: 225px;
+}
+
+.strength4 {
+    background: none repeat scroll 0 0 #008000; /* best */
+    width: 300px;
+}
+/* End styling for Password Validation Box */
+
+
+/* BEGIN ALL MOBILE STYLING */
+
+/* Begin Mobile - All pages */
+@media (max-width: 768px) {
+    #main {
+        padding: 10px; /* reduce padding to increase size of content */
+        position: relative; /* set position type to allow repositioning of nested elements*/
+        top: 30px; /* push down to avoid overlapping navbar expander*/
+    }
+}
+/* End Mobile - All pages */
+
+/* Begin Mobile - Jobs page */
+/* Create a single flex row containing multiple flex columns */
+/* Each flex column will contain one job property */
+.jobs-table {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.jobs-col {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+    .jobs-col h6 {
+        color: #17a2b8 !important;
+        font-weight: 700 !important;
+    }
+
+    .jobs-col p {
+        margin-bottom: 3px; /* vertical spacing between rows */
+    }
+
+@media (max-width: 575.98px) { /* Reduce font size for mobile */
+    .jobs-col h5 {
+        font-size: 0.8rem;
+    }
+
+    .jobs-col p {
+        font-size: 0.8rem;
+    }
+}
+/* End Mobile - Jobs page */
+
+/* Begin Mobile - News page */
+/* Create single flex column containing multiple flex rows */
+/* Each flex row will contains one news entry */
+.news-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.news-row {
+    display: flex;
+}
+
+.news-title {
+    display: flex;
+    flex: 1 1 20%;
+    padding: 5px;
+    /* Min-width dynamically set using JS */
+}
+
+.news-item {
+    display: flex;
+    flex: 2 1 40%;
+    padding: 5px;
+}
+
+.news-expire {
+    display: flex;
+    flex: 1 1 18%;
+    padding: 5px 5px 5px 20px;
+    min-width: 4.5rem;
+}
+
+.news-modify {
+    display: flex;
+    flex: 1 1 22%;
+    height: 25%;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+@media (max-width: 575.98px) {
+    .news-modify { /* Remove modification buttons on mobile */
+        display: none;
+        position: absolute;
+    }
+
+    .news-title, .news-item, .news-expire {
+        font-size: 0.8rem;
+    }
+
+    .news-expire {
+        padding: 5px;
+    }
+}
+/* End Mobile - News page */
+
+/* Begin Mobile - Chat Messages page */
+/* Create single flex column containing multiple flex rows */
+/* Each flex row will contain one chat message entry */
+.chat-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.chat-row {
+    display: flex;
+}
+
+.chat-sender {
+    display: flex;
+    flex: 1 1 20%;
+    padding: 5px;
+    /* Min-width dynamically set using JS */
+}
+
+.chat-date {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 10%;
+    padding: 5px;
+    min-width: 6rem;
+}
+
+.chat-message {
+    display: flex;
+    flex: 1 2 50%;
+    padding: 5px;
+}
+
+.chat-modify {
+    display: flex;
+    flex: 1 1 20%;
+    height: 25%;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+@media (max-width: 575.98px) {
+    .chat-modify { /* Remove modification buttons on mobile */
+        display: none;
+        position: absolute;
+    }
+
+    .chat-sender, .chat-date, .chat-message {
+        font-size: 0.8rem;
+    }
+
+    .chat-date {
+        min-width: 5rem; /* reduce min-width to account for font size change */
+    }
+}
+/* End Mobile - Chat Messages page */
+
+/* END OF ALL MOBILE STYLING */
+
+
+/* Styling the Calendar*/
+#calendar {
+    background-color: rgba(34,34,34,.45);
+    padding: 45px;
+    border-radius: 20px;
+    border-color: black;
+    color: white;
+    margin-top: 45px;
+    position: center;
+}
+
+.employee_timeoffcalendar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -185px;
+    margin-left: 115px;
+}
+
+
+.fc-day-header {
+    background-color: #22223b;
+}
+
+.fc-axis.fc-widget-header {
+    background-color: #4A4E69;
+}
+
+.fc-axis.fc-widget-content {
+    background-color: #9a8c98;
+}
+
+.fc-widget-content {
+    background-color: #bcbcbc;
+}
+
+.fc-day.fc-today.fc-state-highlight {
+    background-color: #c9ada7;
+}
+
+.fc-day-number {
+    color: black;
+}
+/* End of Styling the Calendar*/
+/*==================================================================================
+    Jobsite Details
+*/
+
+#jobSiteMap {
+    height: 350px;
+    width: 350px;
+}
+
+.invalidMap {
+    background-color: rgb(185, 185, 185);
+}
+
+    .invalidMap div {
+        line-height: 325px;
+        text-align: center;
+    }
+
+/* End of Styling JobSite Map*/
+
+
+
+
+
+.susp {
+    display: inline;
+    padding-left: 10px;
+}
+
+/* Home Syles */
+#home_box {
+    text-align: center;
+    margin-top: 150px;
+}
+
+#home_jumbotron #home_content {
+    display: inline-block;
+    border: 3px solid black;
+    margin: 0 auto;
+}
+
+.home_btn {
+    background: #332635;
+    color: white;
+    border: 1.4px solid rgba(247,247, 249, 0.35);
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+    padding:3.5px;
+}
+
+    .home_btn:hover {
+        color: lightgray;
+        text-decoration: underline;
+        box-shadow: grey 10px;
+    }
+/* End of Home Styles */
+
+/* Split Card Header */
+
+.splitHeader {
+    background-color: rgb(117, 137, 138);
+}
+
+.splitHeader-Box {
+    float: left;
+    width: 50%;
+}
+
+    .splitHeader-Box:last-child {
+        text-align: right;
+    }
+
+.splitHeader::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.splitHeader-Box h3 a {
+    color: #212529;
+    text-decoration: none;
+}
+
+/* End Split Card Header */
+
+
+/*Closes the gap in the header drop-down menu so the menu isn't lost when the cursor is in the gap*/
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    width:245px;
+}
+
+
+/*Begin Jumbotron*/
+
+#home_jumbotron {
+    position: relative;
+    overflow: hidden;
+    height: 470px;
+    width: 1130px;
+    margin-top: -100px;
+}
+
+#home_jumbotron h1 {
+    font-size: 48px;
+    position: absolute;
+    top: 10px;
+    left: 225px;
+}
+
+#home_jumbotron p{
+    position: absolute;
+    top: 60px;
+    left: 255px;
+    font-style:italic;
+
+}
+
+#home_jumbotron img {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    height: 500px;
+    width: 1200px;
+    left: 0;
+    top: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+@keyframes home_jumbotronFadeInOut {
+    0% {
+        opacity: 1;
+    }
+    
+    17% {
+        opacity: 1;
+    }
+        
+    25% {
+        opacity: 0;
+    }
+
+    92% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+#home_jumbotron img:nth-of-type(1){
+    animation-delay: 8s;
+}
+
+#home_jumbotron img:nth-of-type(2) {
+    animation-delay: 6s;
+}
+
+#home_jumbotron img:nth-of-type(3) {
+    animation-delay: 4s;
+}
+
+#home_jumbotron img:nth-of-type(4) {
+    animation-delay: 2s;
+}
+#home_jumbotron img:nth-of-type(5){
+    animation-delay: 0;
+}
+
+#home_jumbotron img {
+    animation-name: home_jumbotronFadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+}
+/*End Jumbotron*/
