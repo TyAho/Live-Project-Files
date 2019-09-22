@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+ <h2>Welcome To Ajax Loader</h2>
+ <div id="divLoader" style="display:none;">
+  <img src="~/Content/ajax-loader.gif" alt="Loader" />
+</div>
+ <input type="submit" id="btnSubmit" value="Submit" />
+ <script>
+  $("#btnSubmit").click(function () {
+  $("#divLoader").show();
+      $.ajax({
+      type:"GET",
+      url: '/Jobs',
+      dataType: "json",
+          beforeSend: function () {
+              $("#divLoader").show();
+          },
+
+          complete: function () {
+              $("#divLoader").hide();
+          },
+
+  type: "POST",
+  contentType: 'application/json; charset=utf-8',
+  //data: {},
+  //async: true,
+  //processData: false,
+  // cache: false,
+          success: function (data) {
+              var output = "";
+              for (var i in data) {
+                  output += `
+                            <ul>
+                                 <li>Id ${data[i].JobIb}</li>
+                                 <li>Title ${data[i].JobTitle}</li>
+                                 <li>Type ${data[i].JobType}</li>
+                                 <li>Active ${data[i].Active}</li>
+                                 <li>Location ${data[i].Location}</li>
+                                 <li>Manager ${data[i].Manager}</li>
+                            </ul>
+                            `;
+              }
+              $("#result").html(output);
+          },
+          error: function () {
+              $("#result").html("Failed to fetch data")
+          
+  $("#divLoader").hide();
+  alert(data);
+  },
+  error: function (xhr) {
+  $("#divLoader").hide();
+  alert();
+  }
+   })
+  });
+</script>
+
