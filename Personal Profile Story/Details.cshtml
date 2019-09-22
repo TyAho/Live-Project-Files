@@ -1,0 +1,42 @@
+﻿@model ManagementPortal.Models.PersonalProfile
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PersonalProfile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.DisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.DisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutMe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutMe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TagLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TagLine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProfileID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

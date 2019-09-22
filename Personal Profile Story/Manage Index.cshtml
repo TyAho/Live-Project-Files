@@ -1,0 +1,73 @@
+﻿@model ManagementPortal.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<div class="IndexBody">
+    <div class="text-center">
+        <h2>Manage Account</h2>
+    </div>
+
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <h4>Change your account settings</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Password:</dt>
+            <dd>
+                [
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+                ]
+            </dd>
+
+            <dt>Account Info:</dt>
+            <dd>
+                [ @Html.ActionLink("Edit username and other account info", "EditAccountInfo", "Manage") ]
+            </dd>
+            
+            <dt>Personal Profile:</dt>
+            <dd>
+                [@Html.ActionLink("Create a new one", "Create", "PersonalProfiles")]
+
+            </dd>
+            <dd>
+
+
+
+
+                [@Html.ActionLink("Edit existing one", "Edit", "PersonalProfiles", new { id = Model.ProfileID }, null)]
+
+
+
+                @*[@Html.ActionLink("Edit existing one", "Edit", "PersonalProfiles", new { id = item.ProfileID })]*@
+
+            </dd>
+
+            <dt>Profile Image:</dt>
+            <dd>
+                [ @Html.ActionLink("Upload your profile image here", "Profile") ]
+            </dd>
+
+            <dt>External Logins:</dt>
+            <dd>
+                @Model.Logins.Count [
+                @Html.ActionLink("Manage", "ManageLogins") ]
+            </dd>
+
+            <dt>Two-Factor Authentication:</dt>
+            <dd>
+                <p>
+                    There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                    for details on setting up this ASP.NET application to support two-factor authentication.
+                </p>
+            </dd>
+        </dl>
+    </div>
+</div>
