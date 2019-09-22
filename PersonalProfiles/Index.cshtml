@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ManagementPortal.Models.PersonalProfile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create"@*, FormMethod.Post, new { enctype = "multipart / form - data" }*@)
+
+</p>
+<div class="container" id="ProfileBody">
+
+
+    @*<h5 class="card-title">Card title</h5>
+                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>*@
+
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+            <tr>
+                <th>
+                    @*<p class="card-text text-center">@Html.DisplayNameFor(model => model.AboutMe)</p>*@
+                </th>
+                <th>
+                    @*<p class="card-text text-center">@Html.DisplayNameFor(model => model.TagLine)</p>*@
+                </th>
+                <th>
+                    @*<p class="card-text text-center">@Html.DisplayNameFor(model => model.ProfilePicture)</p>*@
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+
+            {
+                <tr>
+                    <td>
+                        <p class="card-text text-center">@Html.DisplayNameFor(model => model.AboutMe)</p>
+                        <p class="card-text1 text-center"> @Html.DisplayFor(modelItem => item.AboutMe)</p>
+                    </td>
+                    <td>
+                        <p class="card-text text-center">@Html.DisplayNameFor(model => model.TagLine)</p>
+                        <p class="card-text2 text-center"> @Html.DisplayFor(modelItem => item.TagLine)</p>
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProfileID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProfileID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProfileID })
+                    </td>
+                </tr>
+
+            }
+        </div>
+    </div>
+</div>
