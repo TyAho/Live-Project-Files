@@ -1,73 +1,99 @@
-﻿@model ManagementPortal.Models.IndexViewModel
+﻿@using ManagementPortal.Models
+@using ManagementPortal.Common
+@using ManagementPortal.Helpers
+@using ManagementPortal.Enums
+@model PagedList.IPagedList<ManagementPortal.Models.JobSite>
+@using PagedList.Mvc;
+@*@model IEnumerable<JobSite>*@
+
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Index";
 }
 
-<div class="indexContainer">
-    <div class="text-center">
-        <h2>Manage Account</h2>
-    </div>
+<h2>Job Sites</h2>
+<div class="IndexBody">
+    <p>
+        @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetCreate())
+    </p>
 
-    <p class="text-success">@ViewBag.StatusMessage</p>
-    <div>
-        <h4>Change your account settings</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>Password:</dt>
-            <dd>
-                [
-                @if (Model.HasPassword)
-                {
-                    @Html.ActionLink("Change your password", "ChangePassword")
-                }
-                else
-                {
-                    @Html.ActionLink("Create", "SetPassword")
-                }
-                ]
-            </dd>
-
-            <dt>Account Info:</dt>
-            <dd>
-                [ @Html.ActionLink("Edit username and other account info", "EditAccountInfo", "Manage") ]
-            </dd>
-            
-            <dt>Personal Profile:</dt>
-            <dd>
-                [@Html.ActionLink("Create a new one", "Create", "PersonalProfiles")]
-
-            </dd>
-            <dd>
+    @using (Html.BeginForm("Index", "Jobsites", FormMethod.Get))
+    {
+        <p>
+            Find by name : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </p>
 
 
+    }
+    <table class="table table-striped table-light rounded-lg">
+        <tr>
+            <th>
+                @Html.ActionLink("SiteName", "Index", new { sortOrder = ViewBag.SiteSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.SiteName)
+                </th>*@
 
+            <th>
+                @Html.ActionLink("Address", "Index", new { sortOrder = ViewBag.AddressSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>*@
 
-                [@Html.ActionLink("Edit existing one", "Edit", "PersonalProfiles", new { id = Model.ProfileID }, null)]
+            <th>
+                @Html.ActionLink("Town", "Index", new { sortOrder = ViewBag.TownSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Town)
+                </th>*@
 
+            <th>
+                @Html.ActionLink("State", "Index", new { sortOrder = ViewBag.StateSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
 
+            @*<th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>*@
 
-                @*[@Html.ActionLink("Edit existing one", "Edit", "PersonalProfiles", new { id = item.ProfileID })]*@
+            <th>
+                @Html.ActionLink("Zip", "Index", new { sortOrder = ViewBag.ZipSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
 
-            </dd>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Zip)
+                </th>*@
+            <th></th>
+        </tr>
 
-            <dt>Profile Image:</dt>
-            <dd>
-                [ @Html.ActionLink("Upload your profile image here", "Profile") ]
-            </dd>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Town)
+                </td>
+                <td>
+                    @item.State.GetDisplayName()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zip)
+                </td>
+                <td>
+                    @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetEditDetailsDelete(item.JobSiteID.ToString()))
+                </td>
+            </tr>
+        }
 
-            <dt>External Logins:</dt>
-            <dd>
-                @Model.Logins.Count [
-                @Html.ActionLink("Manage", "ManageLogins") ]
-            </dd>
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-            <dt>Two-Factor Authentication:</dt>
-            <dd>
-                <p>
-                    There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                    for details on setting up this ASP.NET application to support two-factor authentication.
-                </p>
-            </dd>
-        </dl>
-    </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
