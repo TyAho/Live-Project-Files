@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.HideNavBar = true;
+}
+<div class="container" id="home_box">
+	<div class="container jumbotron" id="home_jumbotron">
+		<h1 class="display-4">Welcome to "CompanyName.Inc"</h1>
+		<p class="lead">You have reached our company portal for new and current employees"</p>
+	</div>
+	<div class="container" id="home_content">
+		<div class="row">
+			<div class="col-4">
+				<div class="card text-light bg-secondary py-3 px-2">
+					<h5 class="card-title">Looking for our main website?</h5>
+					<input type="button" class="home_btn" onclick="location.href='@Url.Action("Dashboard", "Home")'" value="Take a look">
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card text-light bg-secondary py-3 px-2">
+					<h5 class="card-title">Already a registered employee?</h5>
+					<input type="button" class="home_btn" onclick="location.href='@Url.Action("Login","Account")'" value="Log in here">
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card text-light bg-secondary py-3 px-2">
+					<h5 class="card-title">New employee  register here.</h5>
+					<input type="button" class="home_btn" onclick="location.href='@Url.Action("NewUser","Account")'" value="Register here">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>

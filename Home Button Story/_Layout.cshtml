@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Management Portal</title>
+    @*@Styles.Render("~/Content/fullcalendarcss")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC&display=swap" rel="stylesheet"> <!-- Link for the brand/company title font-->
+    @Styles.Render("~/Content/css")
+    @using Microsoft.AspNet.Identity;
+</head>
+
+<body>
+    @if (User.Identity.IsAuthenticated)
+    {
+
+
+    <header class="card">
+        <img id="site-header">
+        <div class="card-img-overlay">
+            <a id="header-title" href="@Url.Action("Dashboard","Home")"><img src="~/Content/images/LOGO_color-Black.png" alt="" /></a>
+        </div>
+            @*****************Header dropdown for logged in user****************@
+        <div class="headernav card-img-overlay d-flex justify-content-end">
+            <div class="dropdown textcolor">
+                <button class="navbar-toggler btn" type="button" data-toggle="dropdown">
+
+                    Welcome @User.Identity.GetUserName()
+
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="navigation" class="sidenav nav flex-column">
+        <button class="navbar-toggler text-left second-button" type="button" data-target= "#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="icon-slider">
+                <div class="animated-icon">
+                    <span></span><span></span><span></span><span></span>
+                    <svg class="icon-bg"><rect width="55px" height="37px" fill="white"></rect></svg>
+                    <!-- SVG used here for future customization.  Can also just apply background to icon -->
+                </div>
+            </div>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mr-auto">
+                <li><a class="nav-title" href="@Url.Action("Dashboard","Home")"> <i class="fa fa-home icon-padding" onclick="openNav()"></i>Home</a></li>
+                
+                <!--Users-->
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <!--Admin-->
+                    <li class="has-sub">
+                        <a class="nav-title" href="#"><i class="fa fa-users icon-padding" onclick="openNav()"></i>Users</a>
+                        <ul>
+                            <li>@Html.ActionLink("Add Users", "Create", new { controller = "CreateUserRequest" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Unregistered Users", "Index", new { controller = "CreateUserRequest" }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                }
+                else
+
+                {
+                    <!--Users-->
+                    <li class="has-sub">
+                        <a class="nav-title" href="#"><i class="fa fa-users icon-padding" onclick="openNav()"></i>Users</a>
+                        @Html.Partial("_LoginPartial")
+
+                    </li>
+                }
+
+
+
+
+                <!--Jobs-->
+                <li class="has-sub">
+                    <a class="nav-title" href="#"><i class="fa fa-clipboard icon-padding" onclick="openNav()"></i>Jobs</a>
+                    <ul>
+                        <li>@Html.ActionLink("View All", "Index", new { controller = "Jobs" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Create New", "Create", new { controller = "Jobs" }, new { @class = "dropdown-item" })</li>
+
+                    </ul>
+                </li>
+
+                <!--JobSites-->
+                <li class="has-sub">
+                    <a class="nav-title" href="#"><i class="fa fa-clipboard icon-padding" onclick="openNav()"></i>Job Sites</a>
+                    <ul>
+                        <li>@Html.ActionLink("View All", "Index", new { controller = "JobSites" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Create New", "Create", new { controller = "JobSites" }, new { @class = "dropdown-item" })</li>
+
+                    </ul>
+                </li>
+
+
+                <!-- ADMIN ONLY -->
+                @if (User.IsInRole("Admin"))
+                {
+                    <!--Admin-->
+                    <li class="has-sub">
+                        <a class="nav-title" href="#"><i class="fa fa-clipboard icon-padding" onclick="openNav()"></i>Admin</a>
+                        <ul>
+                            <li>@Html.ActionLink("Add Users", "Create", new { controller = "CreateUserRequest" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Unregistered Users", "Index", new { controller = "CreateUserRequest" }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                }
+
+
+                <!--Shift Times, Commented out for story 4808, Need to relocate to manager dashboard when created.-->
+                @*<li class="has-sub">
+        <a class="nav-title" href="#"><i class="fa fa-clock-o icon-padding" onclick="openNav()"></i>Shift Times</a>
+        <ul>
+            <li>@Html.ActionLink("View All", "Index", new { controller = "ShiftTimes" }, new { @class = "dropdown-item" })</li>
+            <li>@Html.ActionLink("Create New", "Create", new { controller = "ShiftTimes" }, new { @class = "dropdown-item" })</li>
+
+                </ul>
+            </li>*@
+
+                <!--Schedules-->
+                <li class="has-sub">
+                    <a class="nav-link" href="#"><i class="fa fa-calendar icon-padding" onclick="openNav()"></i>Schedules</a>
+                    <ul>
+                        <li>@Html.ActionLink("View All", "Index", new { controller = "Schedules" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Create New", "Create", new { controller = "Schedules" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Time Off Calendar", "Index", new { controller = "Calendar" }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
+
+                <!--News-->
+                <li id="news" class="nav-item dropdown">
+                    <a class="nav-link" href="#"><i class="fa fa-newspaper-o icon-padding" onclick="openNav()"></i>News</a>
+                    <ul>
+                        <li>@Html.ActionLink("View All", "Index", new { controller = "CompanyNews" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Create New", "Create", new { controller = "CompanyNews" }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
+
+                <!--Chat-->
+                <li class="has-sub">
+                    <a class="nav-title" href="#"><i class="fa fa-comments icon-padding" onclick="openNav()"></i>Chat</a>
+                    <ul>
+                        <li>@Html.ActionLink("View All", "Index", new { controller = "ChatMessages" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Send New Message", "Create", new { controller = "ChatMessages" }, new { @class = "dropdown-item" })</li>
+                        <li><button id="open-messenger-btn" onclick="openChat()">Open Messenger</button></li>
+                    </ul>
+                </li>
+
+            </ul>
+		</div>
+	</div>
+	}
+
+
+    @*Chat Modal*@
+    @RenderPage("Chat.cshtml")
+
+    <div id="main" class="container body-content">
+        @RenderBody()
+
+		<hr />
+		<footer>
+            <div class="slider">
+                &copy; @DateTime.Now.Year - Management Portal
+            </div>
+		</footer>
+	</div>
+
+    @Scripts.Render("~/bundles/chat")                                                               @*This bundle and script are required to make signalr run*@
+    <script src="~/signalr/hubs"></script>
+    <script>
+        var chat = $.connection.chatHub;                                                            //This creates the chat object. ChatHub Functions are called on this object
+        $.connection.hub.start().done(function () {                                                 //Function called by user and sends message to server.
+            $('#send-message').click(function () {
+                chat.server.sendMessage($('#message-box').val());
+            });
+        });
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/fullcalendarjs")
+    @Scripts.Render("~/bundles/leafletjs")
+    @RenderSection("scripts", required: false)
+    @RenderSection("CalendarScripts", false)
+    <script>
+        chat.connection.start().done(function () {
+            chat.server.getMessages();
+        });
+    </script>
+</body>
+</html>
